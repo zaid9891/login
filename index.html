@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login / Signup</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(to right, #4facfe, #00f2fe);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .container {
+      background-color: #fff;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .container h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #333;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 600;
+      color: #555;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      transition: border-color 0.3s;
+    }
+
+    input:focus {
+      border-color: #4facfe;
+      outline: none;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 12px;
+      background: #4facfe;
+      border: none;
+      color: white;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .btn:hover {
+      background: #00c6ff;
+    }
+
+    .toggle-link {
+      display: block;
+      text-align: center;
+      margin-top: 20px;
+      font-size: 14px;
+      color: #666;
+    }
+
+    .toggle-link a {
+      color: #4facfe;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .toggle-link a:hover {
+      text-decoration: underline;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="container" id="form-container">
+    <h2 id="form-title">Login</h2>
+    <form id="userForm">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="you@example.com" required>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Enter password" required>
+      </div>
+
+      <div class="form-group" id="username-group" style="display: none;">
+        <label for="username">Username</label>
+        <input type="text" id="username" placeholder="Choose a username">
+      </div>
+
+      <button type="submit" class="btn" id="submitBtn">Login</button>
+    </form>
+
+    <div class="toggle-link" id="toggleLink">
+      Don't have an account? <a href="#" onclick="toggleForm()">Sign Up</a>
+    </div>
+  </div>
+
+  <script>
+    const formTitle = document.getElementById('form-title');
+    const submitBtn = document.getElementById('submitBtn');
+    const toggleLink = document.getElementById('toggleLink');
+    const usernameGroup = document.getElementById('username-group');
+
+    let isLogin = true;
+
+    function toggleForm() {
+      isLogin = !isLogin;
+      if (isLogin) {
+        formTitle.textContent = "Login";
+        submitBtn.textContent = "Login";
+        usernameGroup.style.display = "none";
+        toggleLink.innerHTML = `Don't have an account? <a href="#" onclick="toggleForm()">Sign Up</a>`;
+      } else {
+        formTitle.textContent = "Sign Up";
+        submitBtn.textContent = "Sign Up";
+        usernameGroup.style.display = "block";
+        toggleLink.innerHTML = `Already have an account? <a href="#" onclick="toggleForm()">Login</a>`;
+      }
+    }
+  </script>
+
+</body>
+</html>
